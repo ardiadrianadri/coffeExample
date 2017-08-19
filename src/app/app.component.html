@@ -1,3 +1,20 @@
-<h1>
-  {{title}}
-</h1>
+<md-grid-list cols="4" rowHeight="10:1">
+ <md-grid-tile>
+  <button md-raised-button color="primary" (click)="prepareCoffee()">Coffee</button>
+ </md-grid-tile>
+ <md-grid-tile>
+  <button md-raised-button color="accent" (click)="prepareCoffeeIce()">Coffee and ice</button>
+ </md-grid-tile>
+ <md-grid-tile>
+  <button md-raised-button color="primary" (click)="prepareCapuccino()">Capuccino</button>
+ </md-grid-tile>
+ <md-grid-tile>
+  <button md-raised-button color="accent" (click)="prepareIrishCoffee()">Irish coffee</button>
+ </md-grid-tile>
+</md-grid-list>
+
+<div class="process">
+    <div *ngFor="let step of coffeeSteps">
+        <step-process [step]="step"></step-process>
+    </div>
+</div>
