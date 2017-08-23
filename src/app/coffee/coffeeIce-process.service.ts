@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/concatMap';
 
 import { Coffee, coffeeIcons, CoffeeProcess } from './coffee';
 
@@ -17,7 +17,7 @@ export class CoffeeIceProcessService extends CoffeeProcess {
     }
     get process(): Observable<Coffee> {
 
-        return this._initProcess.switchMap(
+        return this._initProcess.concatMap(
             (initdata: Coffee) => {
                 initdata.steps[initdata.steps.length - 1].lastFlag = false;
                 return Observable.of(initdata)

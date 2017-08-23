@@ -5,7 +5,7 @@ import { Coffee, coffeeIcons, CoffeeProcess } from './coffee';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/concatMap';
 
 @Injectable()
 export class CapuccinoProcess extends CoffeeProcess {
@@ -18,7 +18,7 @@ export class CapuccinoProcess extends CoffeeProcess {
 
     get process () {
 
-        return this._initProcess.switchMap(
+        return this._initProcess.concatMap(
             (initData: Coffee) => {
                 initData.steps[initData.steps.length - 1].lastFlag = false;
                 return Observable.of(initData)
